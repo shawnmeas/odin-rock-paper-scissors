@@ -78,7 +78,11 @@ function game() {
     Could also be written as "score to win" or "first to (n) wins" to do away with need for math equation in while loop
     Writing it this way because I tend to say "best of 3" or "best of 5" when playing with someone
     */
-    let numBestOf = prompt("Best of how many?");
+    let numBestOf;
+    while (isNaN(numBestOf))
+    { 
+        numBestOf = prompt("Best of how many?");
+    }
     
     //Loop until either playerScore or computerScore reaches the amount of wins needed for the "best of" series
     while(playerScore != (Math.ceil(numBestOf/2)) && computerScore != (Math.ceil(numBestOf/2)))
