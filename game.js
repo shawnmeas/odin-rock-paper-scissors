@@ -1,3 +1,4 @@
+//Function to randomly choose the computer's choice of rock/paper/scissors
 function getComputerChoice() {
     let rand = Math.floor(Math.random() * 3);
     let computerChoice;
@@ -17,7 +18,8 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-function playRound(playerSelection, computerSelection, playerScore, computerScore) {
+//Compares the player's choice with the computer's choice, and returns win/loss/draw
+function playRound(playerSelection, computerSelection) {
     let result;
     playerSelection = playerSelection.toLowerCase();
     if(playerSelection == computerSelection)
@@ -27,6 +29,7 @@ function playRound(playerSelection, computerSelection, playerScore, computerScor
     }
     else if(playerSelection == 'rock')
     {
+        //Returns error if for some reason computerSelection isn't win or loss
         result = computerSelection == 'scissors' ? 'win' : computerSelection == 'paper' ? 'loss' : 'error';
     }
     else if(playerSelection == 'paper')
@@ -41,6 +44,8 @@ function playRound(playerSelection, computerSelection, playerScore, computerScor
     return result;
 }
 
+//Function to print both player and computer choice, as well as round result
+//Takes result from previously run playRound() function
 function printOutcome(playerSelection, computerSelection, result) {
     console.log("Your choice: " + playerSelection);
     console.log("Comp choice: " + computerSelection);
@@ -63,14 +68,24 @@ function incrementScore(currentScore) {
     return newScore;
 }
 
-function game(numBestOf) {
+//Main function
+function game() {
     let playerScore = 0;
     let computerScore = 0;
+
+    /*
+    Prompt for how many non-draw rounds are played to determine match results
+    Could also be written as "score to win" or "first to (n) wins" to do away with need for math equation in while loop
+    Writing it this way because I tend to say "best of 3" or "best of 5" when playing with someone
+    */
+    let numBestOf = prompt("Best of how many?");
     
-    //for (let i = 0; i < numRounds; i++)
+    //Loop until either playerScore or computerScore reaches the amount of wins needed for the "best of" series
     while(playerScore != (Math.ceil(numBestOf/2)) && computerScore != (Math.ceil(numBestOf/2)))
     {
         let playerSelection;
+        //Basic messy error checking that person entered rock/paper/scissors
+        //Input is sanitized to lowercase, so only matters if something completely different is entered
         while(playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors')
         {
             playerSelection = prompt("Rock, paper, or scissors?");
@@ -81,8 +96,11 @@ function game(numBestOf) {
                 console.log("Invalid selection, pick again.");
             }
         }
+
         let computerSelection = getComputerChoice();
         let result = playRound(playerSelection, computerSelection);
+
+        //Adjusts score based on winner of round
         if(result == 'win')
         {
             playerScore = incrementScore(playerScore);
@@ -91,6 +109,8 @@ function game(numBestOf) {
         {
             computerScore = incrementScore(computerScore);
         }
+
+        //Fancy scoreboard printout
         console.log(printOutcome(playerSelection, computerSelection, result));
         console.log("----------------------");
         console.log("------Best of " + numBestOf + "-------");
@@ -99,7 +119,8 @@ function game(numBestOf) {
         console.log("|   " + playerScore + "           " + computerScore + "    |");
         console.log("----------------------");
     }
-    
+
+    //Determine winner by comparing final scores
     if(playerScore > computerScore)
     {
         console.log("You won the match!")
@@ -110,5 +131,4 @@ function game(numBestOf) {
     }
 }
 
-let numBestOf = prompt("Best of how many?");
-game(numBestOf);
+game();
