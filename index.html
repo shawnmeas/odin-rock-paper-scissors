@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="game.js" defer></script>
 </head>
 <body>
     <h1>Rock Paper Scissors!</h1>
@@ -14,5 +13,19 @@
     <br>Firefox: Ctrl+Shift+J
     <br>Opera: Ctrl+Shift+I
     <br>Edge: Ctrl+Shift+I
+
+    <script type="text/javascript">
+        function downloadJSAtOnload() {
+            var element = document.createElement("script");
+            element.src = "game.js";
+            document.body.appendChild(element);
+        }
+
+        if (window.addEventListener)
+            window.addEventListener("load", downloadJSAtOnload, false);
+        else if (window.attachEvent)
+            window.attachEvent("onload", downloadJSAtOnload);
+        else window.onload = downloadJSAtOnload;
+    </script>
 </body>
 </html>
