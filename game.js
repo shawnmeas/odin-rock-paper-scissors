@@ -63,10 +63,24 @@ function incrementScore(currentScore) {
     return newScore;
 }
 
-function game(playerScore, computerScore) {
-    for (let i = 0; i < 5; i++)
+function game(numBestOf) {
+    let playerScore = 0;
+    let computerScore = 0;
+    
+    //for (let i = 0; i < numRounds; i++)
+    while(playerScore != (Math.ceil(numBestOf/2)) && computerScore != (Math.ceil(numBestOf/2)))
     {
-        let playerSelection = 'rock';
+        let playerSelection;
+        while(playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors')
+        {
+            playerSelection = prompt("Rock, paper, or scissors?");
+            playerSelection = playerSelection.toLowerCase();
+            console.log(playerSelection);
+            if(playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors')
+            {
+                console.log("Invalid selection, pick again.");
+            }
+        }
         let computerSelection = getComputerChoice();
         let result = playRound(playerSelection, computerSelection);
         if(result == 'win')
@@ -78,13 +92,23 @@ function game(playerScore, computerScore) {
             computerScore = incrementScore(computerScore);
         }
         console.log(printOutcome(playerSelection, computerSelection, result));
-        console.log('----------------------');
-        console.log('|     Scoreboard     |')
-        console.log('| Player    Computer |')
-        console.log('|   ' + playerScore + '           ' + computerScore + '    |');
-        console.log('----------------------');
+        console.log("----------------------");
+        console.log("------Best of " + numBestOf + "-------");
+        console.log("|     Scoreboard     |");
+        console.log("| Player    Computer |");
+        console.log("|   " + playerScore + "           " + computerScore + "    |");
+        console.log("----------------------");
+    }
+    
+    if(playerScore > computerScore)
+    {
+        console.log("You won the match!")
+    }
+    else if(playerScore < computerScore)
+    {
+        console.log("You lost the match!")
     }
 }
-let playerScore = 0;
-let computerScore = 0;
-game(playerScore, computerScore);
+
+let numBestOf = prompt("Best of how many?");
+game(numBestOf);
