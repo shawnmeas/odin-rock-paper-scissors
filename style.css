@@ -1,0 +1,146 @@
+
+body {
+    background-color: #073642;
+    color: #b58900;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    font-family: Helvetica;
+    display: flex;
+    flex-direction: column;
+}
+
+.body{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game {
+    margin-top: 100px;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game .container {
+    padding: 5px;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bolder;
+    -webkit-text-stroke-width: 0.4px;
+    -webkit-text-stroke-color: black;
+    margin-bottom: 40px;
+}
+
+.scoreboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 20px;
+}
+
+.name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d33682;
+    -webkit-text-stroke-width: 0.4px;
+    -webkit-text-stroke-color: black;
+}
+
+.score {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2aa198;
+    -webkit-text-stroke-width: 0.4px;
+    -webkit-text-stroke-color: black;
+}
+
+.choicecontainer {
+    color: #93a1a1;
+    font-size: 20px;
+    font-weight: bold;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.choicecontainer .choices {
+    color: #dc322f;
+    font-size: 20px;
+    font-weight: bold;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+    margin-top:10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.rock, .paper, .scissors {
+    padding: 5px;
+}
+
+.results .choices {
+    color: #268bd2;
+    font-size: 20px;
+    font-weight: bold;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.results .choices img{
+    width: 150px;
+}
+
+.divider {
+    font-size: 48px;
+    font-weight: bolder;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+.outcome {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.footer {
+    background-color: #002b36;
+    padding: 10px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+}
+
+.designedby {
+    text-align: left;
+}
+
+.attribution {
+    text-align: right;
+}
+
+a {
+    color: #dc322f;
+}
+
+img {
+    width: 200px;
+}

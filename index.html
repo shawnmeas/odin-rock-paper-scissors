@@ -5,16 +5,97 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Rock Paper Scissors!</h1>
-    Look in your developer tools console to play!
-    <br>Chrome: Ctrl+Shift+J
-    <br>Firefox: Ctrl+Shift+J
-    <br>Opera: Ctrl+Shift+I
-    <br>Edge: Ctrl+Shift+I
-
-    <script type="text/javascript">
+    <div class="body">
+        <div class="game">
+            <div class="container">
+                <div class="title">
+                    Rock, Paper, Scissors!
+                </div>
+                <div class="scoreboard">
+                    <div class="player">
+                        <div class="name">
+                            Player
+                        </div>
+                        <div class="score">
+                            0
+                        </div>
+                    </div>    
+                    <div class="computer">
+                        <div class="name">
+                            Computer
+                        </div>
+                        <div class="score">
+                            0
+                        </div>
+                    </div>    
+                </div>
+                <div class="choicecontainer">
+                        Make your choice
+                    <div class="choices">
+                        <div class="rock">
+                            <div class="image">
+                                <img src="images/rock.png">
+                            </div>
+                            <div class="text">Rock</div>
+                        </div>
+                        <div class="paper">
+                            <div class="image">
+                                <img src="images/paper.png">
+                            </div>
+                            <div class="text">Paper</div>
+                        </div>
+                        <div class="rock">
+                            <div class="image">
+                                <img src="images/scissors.png">
+                            </div>
+                            <div class="text">Scissors</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="results">
+                    <div class="choices">
+                        <div class="player">
+                            <div class="text">
+                               Your Choice 
+                            </div>
+                            <div class="image">
+                                <img src="images/rock.png">
+                            </div>
+                        </div>
+                        <div class="divider">
+                            -
+                        </div>
+                        <div class="computer">
+                            <div class="text">
+                                Computer Choice
+                            </div>
+                            <div class="image">
+                                <img src="images/rock.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="outcome">
+                        You won or lost
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="designedby">
+            Designed by Shawn Meas
+        </div>
+        <div class="attribution">
+            Images Licensed under Creative Commons 
+            <br>rock by Studio Fibonacci from <a href="https://thenounproject.com/browse/icons/term/rock/" target="_blank" title="rock Icons">Noun Project</a>
+            <br>Paper by Studio Fibonacci from <a href="https://thenounproject.com/browse/icons/term/paper/" target="_blank" title="Paper Icons">Noun Project</a>
+            <br>Scissors by Studio Fibonacci from <a href="https://thenounproject.com/browse/icons/term/scissors/" target="_blank" title="Scissors Icons">Noun Project</a>
+        </div>
+    </div>
+<!--    <script type="text/javascript">
         function downloadJSAtOnload() {
             var element = document.createElement("script");
             element.src = "game.js";
@@ -26,6 +107,6 @@
         else if (window.attachEvent)
             window.attachEvent("onload", downloadJSAtOnload);
         else window.onload = downloadJSAtOnload;
-    </script>
+    </script>-->
 </body>
 </html>
