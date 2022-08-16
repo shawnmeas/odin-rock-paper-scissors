@@ -18,8 +18,10 @@ body {
 }
 
 .game {
+    background-color: #002b36;
+    border-radius: 20px;
     margin-top: 100px;
-    width: 800px;
+    width: 720px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,7 +44,9 @@ body {
     align-items: center;
     justify-content: center;
     gap: 50px;
+    margin: auto;
     margin-bottom: 20px;
+    width: 300px;
 }
 
 .name {
@@ -100,7 +104,9 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    margin: auto;
     margin-bottom: 10px;
+    width: 400px;
 }
 
 .results .choices img{
@@ -143,4 +149,16 @@ a {
 
 img {
     width: 200px;
+}
+
+button {
+    background-color: #eee8d5;
+    border: 0px;
+    border-radius: 20px;
+    padding: 5px;
+    color: #002b36;
+    font-size: 20px;
+    font-weight: bold;
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: black;
 }
