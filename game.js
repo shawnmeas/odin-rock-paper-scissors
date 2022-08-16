@@ -21,7 +21,6 @@ function getComputerChoice() {
 //Compares the player's choice with the computer's choice, and returns win/loss/draw
 function playRound(playerSelection, computerSelection) {
     let result;
-    playerSelection = playerSelection.toLowerCase();
     if(playerSelection == computerSelection)
     {
         result = 'draw';
@@ -40,10 +39,20 @@ function playRound(playerSelection, computerSelection) {
         result = computerSelection == 'paper' ? 'win' : computerSelection == 'rock' ? 'loss' : 'error';
     }
 
+    playerChoiceImage.src = "images/" + playerSelection + ".png";
+    computerChoiceImage.src = "images/" + computerSelection + ".png";
+
     console.log("Your choice: " + playerSelection);
     console.log("Comp choice: " + computerSelection);
     console.log(result);
+
+    show();
+
     return result;
+}
+
+function displayOutcome() {
+
 }
 
 //Function to print both player and computer choice, as well as round result
@@ -71,70 +80,105 @@ function incrementScore(currentScore) {
 }
 
 //Main function
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
+function game(playerSelection) {
+    let computerSelection = getComputerChoice();
+    let result = playRound(playerSelection, computerSelection);
 
-    /*
-    Prompt for how many non-draw rounds are played to determine match results
-    Could also be written as "score to win" or "first to (n) wins" to do away with need for math equation in while loop
-    Writing it this way because I tend to say "best of 3" or "best of 5" when playing with someone
-    */
-    let numBestOf;
-    while (isNaN(numBestOf))
-    { 
-        numBestOf = prompt("Best of how many?");
+    if(result == 'win')
+    {
+        playerScore = incrementScore(playerScore);
+        playerScoreText.textContent = playerScore;
+        outcomeText.textContent = capitalizeFirst(playerSelection) + " beats " + capitalizeFirst(computerSelection) + ". You win!";
     }
+    else if(result == 'loss')
+    {
+        computerScore = incrementScore(computerScore);
+        computerScoreText.textContent = computerScore;
+        outcomeText.textContent = capitalizeFirst(playerSelection) + " beats " + capitalizeFirst(computerSelection) + ". You lose!";
+    }
+    else if(result == 'draw')
+    {
+        outcomeText.textContent = "Draw!";
+    }
+
+    if(playerScore > 2)
+    {
+//        fadeOut('game');
+        document.getElementById('game').style.opacity = 0;
+        document.getElementById('game').style.pointerEvents = "none";
+        document.getElementById('matchtext').style.opacity = 1;
+        matchText.textContent = "You won the match. Click to play again."
+    }
+    else if(computerScore > 2)
+    {
+//        fadeOut('game');
+        document.getElementById('game').style.opacity = 0;
+        document.getElementById('game').style.pointerEvents = "none";
+        document.getElementById('matchtext').style.opacity = 1;
+        matchText.textContent = "You lost the match. Click to play again."
+    }
+
     
+
     //Loop until either playerScore or computerScore reaches the amount of wins needed for the "best of" series
-    while(playerScore != (Math.ceil(numBestOf/2)) && computerScore != (Math.ceil(numBestOf/2)))
+}
+
+function resetGame() {
+    hide();
+    console.log('reset clicked');
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreText.textContent = playerScore;
+    computerScoreText.textContent = computerScore;
+    document.getElementById('game').style.opacity = 1;
+    document.getElementById('game').style.pointerEvents = "auto";
+    document.getElementById('matchtext').style.opacity = 0;
+}
+
+function hide() {
+    for(let i = 0; i < hideTargets.length; i++)
     {
-        let playerSelection;
-        //Basic messy error checking that person entered rock/paper/scissors
-        //Input is sanitized to lowercase, so only matters if something completely different is entered
-        while(playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors')
-        {
-            playerSelection = prompt("Rock, paper, or scissors?");
-            playerSelection = playerSelection.toLowerCase();
-            console.log(playerSelection);
-            if(playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors')
-            {
-                console.log("Invalid selection, pick again.");
-            }
-        }
-
-        let computerSelection = getComputerChoice();
-        let result = playRound(playerSelection, computerSelection);
-
-        //Adjusts score based on winner of round
-        if(result == 'win')
-        {
-            playerScore = incrementScore(playerScore);
-        }
-        else if(result == 'loss')
-        {
-            computerScore = incrementScore(computerScore);
-        }
-
-        //Fancy scoreboard printout
-        console.log(printOutcome(playerSelection, computerSelection, result));
-        console.log("----------------------");
-        console.log("------Best of " + numBestOf + "-------");
-        console.log("|     Scoreboard     |");
-        console.log("| Player    Computer |");
-        console.log("|   " + playerScore + "           " + computerScore + "    |");
-        console.log("----------------------");
-    }
-
-    //Determine winner by comparing final scores
-    if(playerScore > computerScore)
-    {
-        console.log("You won the match!")
-    }
-    else if(playerScore < computerScore)
-    {
-        console.log("You lost the match!")
+        hideTargets[i].style.visibility = "hidden";
     }
 }
 
+function show() {
+    for(let i = 0; i < hideTargets.length; i++)
+    {
+        hideTargets[i].style.visibility = "visible";
+    }
+}
+
+function capitalizeFirst(input) {
+    let output = input.charAt(0).toUpperCase() + input.slice(1);
+    return output;
+}
+
 //game();
+let hideTargets = document.querySelectorAll(".hideme");
+let playerScore = 0;
+let computerScore = 0;
+
+const buttons = document.querySelectorAll('.button');
+const playerScoreText = document.getElementById("playerscore");
+const computerScoreText = document.getElementById("computerscore");
+const playerChoiceImage = document.getElementById("playerchoice");
+const computerChoiceImage = document.getElementById("computerchoice");
+const outcomeText = document.getElementById("outcome");
+const matchText = document.getElementById("matchtext");
+
+playerScoreText.textContent = playerScore;
+computerScoreText.textContent = computerScore;
+
+buttons.forEach((button) =>
+    button.addEventListener('click', () => {
+        console.log(button.id);
+        game(button.id);
+    })
+);
+
+matchText.addEventListener('click', () => {
+    resetGame();
+});
+
+hide();

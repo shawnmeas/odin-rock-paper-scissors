@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
-    <script src="game.js"></script>
+<!--    <script src="game.js"></script>-->
 </head>
 <body>
     <div class="body">
-        <div class="game">
+        <div class="game" id="game">
             <div class="container">
                 <div class="title">
                     Rock, Paper, Scissors!
@@ -20,40 +20,42 @@
                         <div class="name">
                             Player
                         </div>
-                        <div class="score">
-                            0
+                        <div class="score" id="playerscore">
                         </div>
                     </div>    
                     <div class="computer">
                         <div class="name">
                             Computer
                         </div>
-                        <div class="score">
-                            0
+                        <div class="score" id="computerscore">
                         </div>
                     </div>    
                 </div>
                 <div class="choicecontainer">
+                        Best of 5<br>
                         Make your choice
                     <div class="choices">
-                        <div class="rock">
-                            <button id="rock" onclick="playRound('rock', getComputerChoice())">
+                        <div class="rock button" id="rock">
+                            <!-- <button id="rock" onclick="playRound('rock')"> -->
+                            <!-- <button id="rock"> -->
                                 <div class="image">
                                     <img src="images/rock.png">
                                 </div>
                                 <div class="text">Rock</div>
                             </button>
                         </div>
-                        <div class="paper">
-                            <button id="paper" onclick="playRound('paper', getComputerChoice())">
+                        <div class="paper button" id="paper">
+                            <!-- <button id="paper" onclick="playRound('paper')"> -->
+                            <!-- <button id="paper"> -->
                                 <div class="image">
                                     <img src="images/paper.png">
                                 </div>
                                 <div class="text">Paper</div>
                             </button>
                         </div>
-                        <div class="scissors">
-                            <button id="scissors" onclick="playRound('scissors', getComputerChoice())">
+                        <div class="scissors button" id="scissors">
+                            <!-- <button id="scissors" onclick="playRound('scissors')"> -->
+                            <!-- <button id="scissors"> -->
                                 <div class="image">
                                     <img src="images/scissors.png">
                                 </div>
@@ -62,35 +64,34 @@
                         </div>
                     </div>
                 </div>
-                <div class="results">
-                    <div class="choices">
-                        <div class="player">
-                            <div class="text">
+                <div class="results hideme">
+                    <div class="choices hideme">
+                        <div class="player hideme">
+                            <div class="text hideme">
                                Your Choice 
                             </div>
-                            <div class="image">
-                                <img src="images/rock.png">
+                            <div class="image hideme">
+                                <img src="images/rock.png" id="playerchoice">
                             </div>
                         </div>
-                        <div class="divider">
+                        <div class="divider hideme">
                             -
                         </div>
-                        <div class="computer">
-                            <div class="text">
+                        <div class="computer hideme">
+                            <div class="text hideme">
                                 Computer Choice
                             </div>
-                            <div class="image">
-                                <img src="images/rock.png">
+                            <div class="image hideme">
+                                <img src="images/rock.png" id="computerchoice">
                             </div>
                         </div>
                     </div>
-                    <div class="outcome">
-                        You won or lost
-                    </div>
+                    <div class="outcome hideme" id="outcome"></div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="match" id="matchtext"></div>
     <div class="footer">
         <div class="designedby">
             Designed by Shawn Meas
@@ -102,7 +103,7 @@
             <br>Scissors by Studio Fibonacci from <a href="https://thenounproject.com/browse/icons/term/scissors/" target="_blank" title="Scissors Icons">Noun Project</a>
         </div>
     </div>
-<!--    <script type="text/javascript">
+    <script type="text/javascript">
         function downloadJSAtOnload() {
             var element = document.createElement("script");
             element.src = "game.js";
@@ -114,6 +115,6 @@
         else if (window.attachEvent)
             window.attachEvent("onload", downloadJSAtOnload);
         else window.onload = downloadJSAtOnload;
-    </script>-->
+    </script>
 </body>
 </html>
