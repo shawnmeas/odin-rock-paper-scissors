@@ -25,7 +25,6 @@ function playRound(playerSelection, computerSelection) {
     if(playerSelection == computerSelection)
     {
         result = 'draw';
-        return result;
     }
     else if(playerSelection == 'rock')
     {
@@ -41,6 +40,9 @@ function playRound(playerSelection, computerSelection) {
         result = computerSelection == 'paper' ? 'win' : computerSelection == 'rock' ? 'loss' : 'error';
     }
 
+    console.log("Your choice: " + playerSelection);
+    console.log("Comp choice: " + computerSelection);
+    console.log(result);
     return result;
 }
 
@@ -135,4 +137,4 @@ function game() {
     }
 }
 
-game();
+//game();

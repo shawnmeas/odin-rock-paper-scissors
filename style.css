@@ -29,21 +29,30 @@ body {
 
 .game .container {
     padding: 5px;
+    padding-top: 0;
 }
 
 .title {
+    background-color: #00222b;
+    border-bottom-left-radius:  20px;
+    border-bottom-right-radius:  20px;
     font-size: 30px;
     font-weight: bolder;
     -webkit-text-stroke-width: 0.4px;
     -webkit-text-stroke-color: black;
-    margin-bottom: 40px;
+    width: 400px;
+    margin: auto;
 }
 
 .scoreboard {
+    background-color: #00222b;
+    border-bottom-left-radius:  20px;
+    border-bottom-right-radius:  20px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 50px;
+    padding-top: 20px;
     margin: auto;
     margin-bottom: 20px;
     width: 300px;
@@ -161,4 +170,14 @@ button {
     font-weight: bold;
     -webkit-text-stroke-width: 0.1px;
     -webkit-text-stroke-color: black;
+}
+
+button:hover{
+    transition: transform .2s;
+    transform: scale(1.1);
+}
+
+button:active{
+    transition: transform .1s;
+    transform: scale(1);
 }

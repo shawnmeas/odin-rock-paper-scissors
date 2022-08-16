@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
+    <script src="game.js"></script>
 </head>
 <body>
     <div class="body">
@@ -36,22 +37,28 @@
                         Make your choice
                     <div class="choices">
                         <div class="rock">
-                            <div class="image">
-                                <img src="images/rock.png">
-                            </div>
-                            <div class="text">Rock</div>
+                            <button id="rock" onclick="playRound('rock', getComputerChoice())">
+                                <div class="image">
+                                    <img src="images/rock.png">
+                                </div>
+                                <div class="text">Rock</div>
+                            </button>
                         </div>
                         <div class="paper">
-                            <div class="image">
-                                <img src="images/paper.png">
-                            </div>
-                            <div class="text">Paper</div>
+                            <button id="paper" onclick="playRound('paper', getComputerChoice())">
+                                <div class="image">
+                                    <img src="images/paper.png">
+                                </div>
+                                <div class="text">Paper</div>
+                            </button>
                         </div>
-                        <div class="rock">
-                            <div class="image">
-                                <img src="images/scissors.png">
-                            </div>
-                            <div class="text">Scissors</div>
+                        <div class="scissors">
+                            <button id="scissors" onclick="playRound('scissors', getComputerChoice())">
+                                <div class="image">
+                                    <img src="images/scissors.png">
+                                </div>
+                                <div class="text">Scissors</div>
+                            </button>
                         </div>
                     </div>
                 </div>
